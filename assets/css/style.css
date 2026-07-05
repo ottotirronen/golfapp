@@ -143,6 +143,13 @@ label {
   width: 100%;
 }
 
+#distanceDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .distance-triplet {
   display: flex;
   align-items: flex-end;

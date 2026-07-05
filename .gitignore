@@ -1,2 +1,3 @@
-golfcoursedata.xlsx
+courses/golfcoursedata.xlsx
+~$*.xlsx
 node_modules/

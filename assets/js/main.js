@@ -95,14 +95,29 @@ function showDistanceStatus(text) {
   document.getElementById("distanceUnit").classList.add("hidden");
 }
 
-// Näytetään etu/keski/taka-etäisyydet
+// Näytetään etu/keski/taka-etäisyydet. Etu/taka ovat valinnaisia -
+// jos kentältä puuttuu koordinaatit, kyseinen sarake piilotetaan.
 function showDistanceValues(front, center, back) {
   document.getElementById("distanceStatus").classList.add("hidden");
   document.getElementById("distanceTriplet").classList.remove("hidden");
   document.getElementById("distanceUnit").classList.remove("hidden");
-  document.getElementById("distanceFront").textContent = front;
   document.getElementById("distanceCenter").textContent = center;
-  document.getElementById("distanceBack").textContent = back;
+
+  const frontItem = document.getElementById("distanceFrontItem");
+  if (front != null) {
+    document.getElementById("distanceFront").textContent = front;
+    frontItem.classList.remove("hidden");
+  } else {
+    frontItem.classList.add("hidden");
+  }
+
+  const backItem = document.getElementById("distanceBackItem");
+  if (back != null) {
+    document.getElementById("distanceBack").textContent = back;
+    backItem.classList.remove("hidden");
+  } else {
+    backItem.classList.add("hidden");
+  }
 }
 
 document.getElementById("prevHole").addEventListener("click", () => {
@@ -164,33 +179,33 @@ function updateDistanceFromPosition(position) {
 
   const { front, center, back } = holeData.pin;
 
-  if (
-    !isValidCoord(front) ||
-    !isValidCoord(center) ||
-    !isValidCoord(back)
-  ) {
+  if (!isValidCoord(center)) {
     showDistanceStatus("Koordinaatteja ei löytynyt.");
     return;
   }
 
-  const frontDistance = calculateDistance(
-    userLat,
-    userLng,
-    parseFloat(front.lat),
-    parseFloat(front.lng),
-  );
   const centerDistance = calculateDistance(
     userLat,
     userLng,
     parseFloat(center.lat),
     parseFloat(center.lng),
   );
-  const backDistance = calculateDistance(
-    userLat,
-    userLng,
-    parseFloat(back.lat),
-    parseFloat(back.lng),
-  );
+  const frontDistance = isValidCoord(front)
+    ? calculateDistance(
+        userLat,
+        userLng,
+        parseFloat(front.lat),
+        parseFloat(front.lng),
+      )
+    : null;
+  const backDistance = isValidCoord(back)
+    ? calculateDistance(
+        userLat,
+        userLng,
+        parseFloat(back.lat),
+        parseFloat(back.lng),
+      )
+    : null;
 
   showDistanceValues(frontDistance, centerDistance, backDistance);
 }

@@ -10,5 +10,29 @@
     "name": "Nokia River Golf - River",
     "country": "Finland",
     "city": "Nokia"
+  },
+  {
+    "id": "golf_pirkkala",
+    "name": "Golf Pirkkala",
+    "country": "Finland",
+    "city": "Pirkkala"
+  },
+  {
+    "id": "hiisigolf_farmi",
+    "name": "Hiisi Golf - Farmi",
+    "country": "Finland",
+    "city": "Lempäälä"
+  },
+  {
+    "id": "lakesidegolf_jarvenranta",
+    "name": "Lakeside Golf - Järvenranta",
+    "country": "Finland",
+    "city": "Sastamala"
+  },
+  {
+    "id": "lakesidegolf_pirunpelto",
+    "name": "Lakeside Golf - Pirunpelto",
+    "country": "Finland",
+    "city": "Sastamala"
   }
 ]
