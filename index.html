@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Golf App</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <meta name="theme-color" content="#121212" />
+    <link rel="icon" href="assets/img/icon-192.png" />
+  </head>
+  <body>
+    <main>
+      <div class="topbar">
+        <div class="distance-section">
+          <h3 class="distance-title">Etäisyys lipulle:</h3>
+          <div class="distance-value">
+            <span id="spinner" class="loader" style="display: none"></span>
+            <div id="distanceDisplay">
+              <span id="distanceStatus">-</span>
+              <div id="distanceTriplet" class="distance-triplet hidden">
+                <div class="distance-item distance-side">
+                  <span id="distanceFront" class="distance-number">-</span>
+                  <span class="distance-label">Etu</span>
+                </div>
+                <div class="distance-item distance-main">
+                  <span id="distanceCenter" class="distance-number">-</span>
+                  <span class="distance-label">Keski</span>
+                </div>
+                <div class="distance-item distance-side">
+                  <span id="distanceBack" class="distance-number">-</span>
+                  <span class="distance-label">Taka</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="hole-info">
+            <div id="holeNumber">Väylä -</div>
+            <div id="holePar">Par -</div>
+          </div>
+
+          <div class="course-select-wrapper">
+            <span id="courseSelector" class="course-link">Valitse kenttä</span>
+            <ul id="courseList" class="dropdown hidden" role="listbox"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button id="prevHole" class="button">&#8592;</button>
+        <button id="calculateBtn" class="button">NÄYTÄ ETÄISYYS</button>
+        <button id="nextHole" class="button">&#8594;</button>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer>
+      <small>
+        <a href="about.html" target="_blank">Tietoa</a> |
+        <a href="#">Ehdota kenttää</a>
+        <br />
+        <p>Copyright 2025</p>
+      </small>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

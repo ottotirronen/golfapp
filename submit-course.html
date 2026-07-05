@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golf Course Editor</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <h1>Golf Course Submission</h1>
+    <h2>Course information</h2>
+    <label
+      >Course Name:
+      <input
+        type="text"
+        id="courseName"
+        placeholder="e.g. Nokia River Golf - Rock"
+        required
+      />
+    </label>
+
+    <label
+      >Course ID:
+      <input
+        type="text"
+        id="courseId"
+        placeholder="e.g. nokiarivergolf_rock"
+        required
+      />
+    </label>
+
+    <label
+      >Country:
+      <input type="text" id="country" placeholder="e.g. Finland" required />
+    </label>
+
+    <label
+      >City:
+      <input type="text" id="city" placeholder="e.g. Nokia" required />
+    </label>
+
+    <h2>
+      Holes 1–18
+      <button id="infoBtn" class="info-button" title="How to enter coordinates">
+        Read first
+      </button>
+    </h2>
+    <div id="holesContainer"></div>
+
+    <button onclick="downloadJson()">Download JSON File</button>
+
+    <!-- Info-modal -->
+    <div id="infoModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModalBtn" class="close">&times;</span>
+        <h3>How to find coordinates</h3>
+        <p>Follow these steps to copy coordinates from Google Maps:</p>
+        <ol>
+          <li>Open Google Maps</li>
+          <li>Find the middle of the green</li>
+          <li>Mobile: tap and hold - Desktop: right-click</li>
+          <li>
+            Copy the coordinates in this format:<br />
+            <code>61.45181, 23.39079</code>
+          </li>
+        </ol>
+        <img
+          src="assets/img/googlemaps_coordinates.png"
+          alt="Google Maps screenshot showing coordinates"
+        />
+      </div>
+    </div>
+
+    <script src="assets/js/submit_course.js"></script>
+  </body>
+</html>
