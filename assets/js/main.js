@@ -4,7 +4,10 @@ let holePins = {};
 let totalHoles = 18;
 let allCourses = [];
 
+document.getElementById("copyrightYear").textContent = new Date().getFullYear();
+
 const selector = document.getElementById("courseSelector");
+const selectorValue = document.getElementById("courseSelectorValue");
 const courseList = document.getElementById("courseList");
 
 // Hae kentät ja täytä dropdown
@@ -26,7 +29,7 @@ fetch("/courses/courses.json")
       const course = courses.find((c) => c.id === savedCourseId);
       if (course) {
         selectedCourseId = savedCourseId;
-        selector.textContent = course.name;
+        selectorValue.textContent = course.name;
         loadCourseData(savedCourseId);
       }
     }
@@ -42,7 +45,7 @@ courseList.addEventListener("click", (e) => {
   if (e.target.tagName === "LI") {
     const courseId = e.target.dataset.id;
     selectedCourseId = courseId;
-    selector.textContent = e.target.textContent;
+    selectorValue.textContent = e.target.textContent;
     localStorage.setItem("selectedCourseId", courseId);
     loadCourseData(courseId);
     courseList.classList.add("hidden");
@@ -59,7 +62,7 @@ document.addEventListener("click", (e) => {
 function loadCourseData(courseId) {
   const course = allCourses.find((c) => c.id === courseId);
   if (course) {
-    selector.textContent = course.name;
+    selectorValue.textContent = course.name;
   }
 
   fetch(`/courses/${courseId}.json`)
@@ -77,12 +80,10 @@ function loadCourseData(courseId) {
 function updateHoleDisplay() {
   localStorage.setItem("currentHole", currentHole);
   const holeData = holePins[String(currentHole)];
-  document.getElementById("holeNumber").textContent = holeData
-    ? `Väylä ${currentHole}`
-    : "Väylä -";
-  document.getElementById("holePar").textContent = `Par ${
-    holeData?.par || "-"
-  }`;
+  document.getElementById("holeNumberValue").textContent = holeData
+    ? currentHole
+    : "-";
+  document.getElementById("holeParValue").textContent = holeData?.par || "-";
   showDistanceStatus("-");
 }
 
@@ -91,15 +92,17 @@ function showDistanceStatus(text) {
   document.getElementById("distanceStatus").textContent = text;
   document.getElementById("distanceStatus").classList.remove("hidden");
   document.getElementById("distanceTriplet").classList.add("hidden");
+  document.getElementById("distanceUnit").classList.add("hidden");
 }
 
 // Näytetään etu/keski/taka-etäisyydet
 function showDistanceValues(front, center, back) {
   document.getElementById("distanceStatus").classList.add("hidden");
   document.getElementById("distanceTriplet").classList.remove("hidden");
-  document.getElementById("distanceFront").textContent = `${front} m`;
-  document.getElementById("distanceCenter").textContent = `${center} m`;
-  document.getElementById("distanceBack").textContent = `${back} m`;
+  document.getElementById("distanceUnit").classList.remove("hidden");
+  document.getElementById("distanceFront").textContent = front;
+  document.getElementById("distanceCenter").textContent = center;
+  document.getElementById("distanceBack").textContent = back;
 }
 
 document.getElementById("prevHole").addEventListener("click", () => {

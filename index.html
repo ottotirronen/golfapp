@@ -14,40 +14,55 @@
   <body>
     <main>
       <div class="topbar">
+        <div class="hole-par-row">
+          <div class="hole-par-item">
+            <span class="hole-par-label">Väylä</span>
+            <span id="holeNumberValue" class="hole-par-value">-</span>
+          </div>
+          <div class="hole-par-divider"></div>
+          <div class="hole-par-item">
+            <span class="hole-par-label">Par</span>
+            <span id="holeParValue" class="hole-par-value">-</span>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
         <div class="distance-section">
-          <h3 class="distance-title">Etäisyys lipulle:</h3>
+          <h3 class="distance-title">Etäisyys viheriölle</h3>
           <div class="distance-value">
             <span id="spinner" class="loader" style="display: none"></span>
             <div id="distanceDisplay">
               <span id="distanceStatus">-</span>
               <div id="distanceTriplet" class="distance-triplet hidden">
                 <div class="distance-item distance-side">
-                  <span id="distanceFront" class="distance-number">-</span>
                   <span class="distance-label">Etu</span>
+                  <span id="distanceFront" class="distance-number">-</span>
                 </div>
                 <div class="distance-item distance-main">
+                  <span class="distance-label distance-label-main">Keski</span>
                   <span id="distanceCenter" class="distance-number">-</span>
-                  <span class="distance-label">Keski</span>
                 </div>
                 <div class="distance-item distance-side">
-                  <span id="distanceBack" class="distance-number">-</span>
                   <span class="distance-label">Taka</span>
+                  <span id="distanceBack" class="distance-number">-</span>
                 </div>
               </div>
+              <div id="distanceUnit" class="distance-unit hidden">metriä</div>
             </div>
           </div>
         </div>
 
-        <div class="info-row">
-          <div class="hole-info">
-            <div id="holeNumber">Väylä -</div>
-            <div id="holePar">Par -</div>
-          </div>
+        <hr class="section-divider" />
 
-          <div class="course-select-wrapper">
-            <span id="courseSelector" class="course-link">Valitse kenttä</span>
-            <ul id="courseList" class="dropdown hidden" role="listbox"></ul>
+        <div class="course-select-wrapper">
+          <div id="courseSelector" class="course-select-row">
+            <span class="course-select-label">Kenttä</span>
+            <span id="courseSelectorValue" class="course-select-value"
+              >Valitse kenttä</span
+            >
           </div>
+          <ul id="courseList" class="dropdown hidden" role="listbox"></ul>
         </div>
       </div>
 
@@ -62,9 +77,9 @@
     <footer>
       <small>
         <a href="about.html" target="_blank">Tietoa</a> |
-        <a href="#">Ehdota kenttää</a>
-        <br />
-        <p>Copyright 2025</p>
+        <p>Copyright <span id="copyrightYear"></span></p>
+
+        <!-- <a href="#">Ehdota kenttää</a> -->
       </small>
     </footer>
 

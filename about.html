@@ -53,8 +53,12 @@
       <small>
         <a href="about.html">Tietoa</a> | <a href="#">Ehdota kenttää</a> |
         <br />
-        <p>Copyright 2025</p>
+        <p>Copyright <span id="copyrightYear">2025</span></p>
       </small>
     </footer>
+    <script>
+      document.getElementById("copyrightYear").textContent =
+        new Date().getFullYear();
+    </script>
   </body>
 </html>
